@@ -1,4 +1,5 @@
-require("core")
+require("plugins.telescope")
+
 -- Bootstrap Packer
 local ensure_packer = function()
   local fn = vim.fn
@@ -20,24 +21,6 @@ vim.cmd([[
     autocmd BufWritePost init.lua source <afile> | PackerSync
   augroup end
 ]])
-
--- Vim configurations
-vim.cmd.colorscheme("oldworld")
-vim.g.mapleader = " "
-vim.wo.relativenumber = true
-vim.opt.number = true
-vim.opt.shiftwidth = 2
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
-
--- Theme setup
-
--- Telescope
-vim.api.nvim_set_keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>of', "<cmd>lua require('telescope.builtin').oldfiles()<CR>", { noremap = true, silent = true })
 
 -- Use a protected call so we don’t error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -62,7 +45,10 @@ return packer.startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = function()
+      require('plugins.telescope') -- Load telescope configuration
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
