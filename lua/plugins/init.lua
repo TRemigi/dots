@@ -37,6 +37,9 @@ return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Example: Lualine (statusline)
+  use 'nvim-lualine/lualine.nvim'
+
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -50,52 +53,50 @@ return packer.startup(function(use)
   }
 
   use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  }
-  
-  require("mason").setup()
-    require("mason-lspconfig").setup({
-      ensure_installed = {
-	"tsserver",
-	"html",
-	"cssls",
-	"tailwindcss",
-	"lua_ls",
-	"angularls",
-	"bashls",
-	"cssls",
-	"ast_grep",
-	"docker",
-	"jsonls",
-	"marksman",
-	"intelephense",
-	"vuels",
-	"yamlls",
-	"typos_lsp",
-      }
-    })
+    "hrsh7th/nvim-cmp",
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets',
+    },
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+      require('luasnip.loaders.from_vscode').lazy_load()
 
-    require("mason-lspconfig").setup_handlers {
-      -- The first entry (without a key) will be the default handler
-      -- and will be called for each installed server that doesn't have
-      -- a dedicated handler.
-      function (server_name) -- default handler (optional)
-	  require("lspconfig")[server_name].setup {}
-      end,
-      -- Next, you can provide a dedicated handler for specific servers.
-      -- For example, a handler override for the `rust_analyzer`:
-      ["rust_analyzer"] = function ()
-	  require("rust-tools").setup {}
-      end
-    }
-    
+      cmp.setup({
+	completion = {
+	  completeopt = 'menu,menuone,preview,noselect',
+	},
+	snippet = {
+	  expand = function(args)
+	    luasnip.lsp_expand(args.body)
+	  end,
+	},
+	mapping = cmp.mapping.preset.insert({
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+	  ["<C-j>"] = cmp.mapping.select_next_item(),
+	  ["C-b>"] = cmp.mapping.scroll_docs(-4),
+	  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+	  ["<C-space>"] = cmp.mapping.complete(),
+	  ["<C-e>"] = cmp.mapping.abort(),
+	  ["<CR>"] = cmp.mapping.confirm({ select = false }),
+	}),
+	sources = cmp.config.sources({
+          { name = 'luasnip' },
+	  { name = 'buffer' },
+	  { name = 'path' },
+	}),
+      })
+    end
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
-
 end)
 
