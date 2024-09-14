@@ -3,6 +3,7 @@ require("config.lazy")
 local opt = vim.opt
 
 -- Vim configurations
+vim.api.nvim_set_keymap('n', '<leader>w', ':set wrap!<CR>', { noremap = true, silent = true })
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
