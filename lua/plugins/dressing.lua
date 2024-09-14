@@ -1,3 +1,4 @@
-require('packer').startup(function()
-    use {'stevearc/dressing.nvim'}
-end)
+return {
+  'stevearc/dressing.nvim',
+  opts = {},
+}

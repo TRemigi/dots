@@ -1,74 +1,42 @@
-require("core")
--- Bootstrap Packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
+require("config.lazy")
 
-local packer_bootstrap = ensure_packer()
-
--- Autocommand that reloads neovim whenever you save the init.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost init.lua source <afile> | PackerSync
-  augroup end
-]])
+local opt = vim.opt
 
 -- Vim configurations
-vim.cmd.colorscheme("oldworld")
+vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 vim.wo.relativenumber = true
-vim.opt.number = true
-vim.opt.shiftwidth = 2
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
+opt.number = true
+opt.cursorline = true
+opt.cursorlineopt = "number"
 
--- Theme setup
+-- tabs & indentation
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
+opt.autoindent = true -- copy indent from current line when starting new one
 
--- Telescope
-vim.api.nvim_set_keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>of', "<cmd>lua require('telescope.builtin').oldfiles()<CR>", { noremap = true, silent = true })
+opt.wrap = false
 
--- Use a protected call so we don’t error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+-- search settings
+opt.ignorecase = true -- ignore case when searching
+opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
--- Initialize packer
-return packer.startup(function(use)
-  -- Theme
-  use { "dgox16/oldworld.nvim" }
+opt.cursorline = true
 
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+-- turn on termguicolors for tokyonight colorscheme to work
+-- (have to use iterm2 or any other true color terminal)
+opt.termguicolors = true
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
+opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
-  -- Example: Lualine (statusline)
-  use 'nvim-lualine/lualine.nvim'
+-- backspace
+opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+-- clipboard
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
-
+-- split windows
+opt.splitright = true -- split vertical window to the right
+opt.splitbelow = true -- split horizontal window to the bottom

@@ -1,6 +1,6 @@
 return {
   "williamboman/mason.nvim",
-  requires = {
+  dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
@@ -30,7 +30,11 @@ return {
         "html",
         "cssls",
         "tailwindcss",
+        "svelte",
         "lua_ls",
+        "graphql",
+        "emmet_ls",
+        "prismals",
         "pyright",
       },
     })
