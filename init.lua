@@ -1,3 +1,4 @@
+require("core")
 require("config.lazy")
 
 local opt = vim.opt

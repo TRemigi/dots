@@ -32,7 +32,6 @@ return {
       -- window splits
       actions = {
         open_file = {
-
           window_picker = {
             enable = false,
           },
@@ -43,6 +42,7 @@ return {
       },
       git = {
         ignore = false,
+
       },
     })
 
