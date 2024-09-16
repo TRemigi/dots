@@ -30,6 +30,8 @@ return {
       },
     })
 
+    vim.lsp.set_log_level("debug")
+
     require("mason-lspconfig").setup_handlers {
       -- The first entry (without a key) will be the default handler
       -- and will be called for each installed server that doesn't have
@@ -39,8 +41,23 @@ return {
       end,
       -- Next, you can provide a dedicated handler for specific servers.
       -- For example, a handler override for the `rust_analyzer`:
-      ["rust_analyzer"] = function ()
-          require("rust-tools").setup {}
+      ["volar"] = function ()
+          require("lspconfig").volar.setup {
+            -- Enable Take Over Mode
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+            init_options = {
+                typescript = {
+                    tsdk = "/usr/local/lib/node_modules/typescript/lib"  -- Adjust this path for your environment
+                }
+            },
+            capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+             --on_attach = function(client, bufnr)
+                 ---- Additional keybindings or on-attach setup
+                 --local opts = { noremap = true, silent = true }
+                 --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+                 --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+              --end,
+          }
       end
     }
 
