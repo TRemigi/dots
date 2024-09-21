@@ -6,6 +6,26 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
+-- find and replace in file
+vim.api.nvim_create_user_command('Fr', function()
+  -- Prompt the user for the search string
+  local search = vim.fn.input('Find: ')
+  -- Prompt the user for the replacement string
+  local replace = vim.fn.input('Replace with: ')
+  -- Perform the search and replace
+  vim.cmd(string.format("%%s/%s/%s/g", search, replace))
+end, {desc = 'Find and replace in file'})
+
+-- find and replace WORD under cursor
+vim.api.nvim_create_user_command('Frw', function()
+  -- Get the WORD under the cursor
+  local word = vim.fn.expand('<cword>')
+  -- Prompt the user for the replacement string
+  local replace = vim.fn.input('Replace "' .. word .. '" with: ')
+  -- Perform the search and replace
+  vim.cmd(string.format("%%s/\\<%s\\>/%s/g", word, replace))
+end, {desc = 'Find and replace WORD under cursor in file'})
+
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
@@ -21,3 +41,7 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+-- file management
+keymap.set('n', '<leader>df', ':!rm %<CR>:bd!<CR>', { noremap = true, silent = true })
+
