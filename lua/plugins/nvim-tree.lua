@@ -106,18 +106,6 @@ return {
 		) -- toggle file explorer on current file
 		keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
 		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-		keymap.set(
-			"n",
-			"<leader>+",
-			':lua require"nvim-tree.view".resize(50)<CR>',
-			{ desc = "Increase nvim-tree window size", noremap = true, silent = true }
-		)
-		keymap.set(
-			"n",
-			"<leader>-",
-			':lua require"nvim-tree.view".resize(30)<CR>',
-			{ desc = "Decrease nvim-tree window size", noremap = true, silent = true }
-		)
 		vim.keymap.set("n", "L", vsplit_preview, { noremap = true, silent = true, desc = "Vsplit Preview" })
 	end,
 }
