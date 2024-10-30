@@ -13,11 +13,15 @@ opt.number = true
 opt.cursorline = true
 opt.cursorlineopt = "number"
 
+
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+-- opt.autoindent = true -- copy indent from current line when starting new one
+opt.smartindent = true
+opt.swapfile = false
+opt.incsearch = true
 
 opt.wrap = false
 

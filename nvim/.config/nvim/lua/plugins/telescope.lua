@@ -49,8 +49,7 @@ return {
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
     keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
     keymap.set('n', '<leader>fC', builtin.commands, { desc = 'Telescope commands' })
-    keymap.set('n', '<leader>fgc', builtin.git_commits, { desc = 'Telescope git commits' })
-    keymap.set('n', '<leader>fgs', builtin.git_status, { desc = 'Telescope git status' })
+    keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status' })
 
 
 
