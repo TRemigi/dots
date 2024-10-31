@@ -50,8 +50,5 @@ return {
     keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
     keymap.set('n', '<leader>fC', builtin.commands, { desc = 'Telescope commands' })
     keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status' })
-
-
-
   end,
 }

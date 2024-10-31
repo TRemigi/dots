@@ -17,6 +17,7 @@ return {
 				json = { "prettier" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
+				php = { "prettier" },
 			},
 		})
 
