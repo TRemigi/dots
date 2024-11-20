@@ -1,0 +1,84 @@
+  @define-color base #191724;
+  @define-color surface #1f1d2e;
+  @define-color overlay #26233a;
+  @define-color muted #6e6a86;
+  @define-color subtle #908caa;
+  @define-color text #e0def4;
+  @define-color love #eb6f92;
+  @define-color gold #f6c177;
+  @define-color rose #ebbcba;
+  @define-color pine #31748f;
+  @define-color foam #9ccfd8;
+  @define-color iris #c4a7e7;
+  @define-color highlightLow #21202e;
+  @define-color highlightMed #403d52;
+  @define-color highlightHigh #524f67;
+
+window#waybar {
+    font-family: "MesloLGS NF";
+    background-color: @overlay;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+}
+
+.modules-left, .modules-center, .modules-right {
+    opacity: 1;
+    background: @base;
+    border-radius: 0.5rem;
+    padding: 2px;
+    color: @rose;
+    font-size: 1rem;
+}
+
+#workspaces {
+    background-color: @base;
+    border-radius: 0.5rem;
+    padding: 0 2px;
+    color: @gold;
+}
+
+#workspaces button {
+    padding: 0 0.3rem 0 0;
+    color: @gold;
+}
+
+#window {
+    border-radius: 0.5rem;
+    padding: 2px 8px;
+    color: @foam;
+}
+
+#wireplumber {
+    opacity: 1;
+    border-radius: 0.5rem;
+    padding: 2px 2px 2px 6px;
+    color: @love;
+}
+
+#battery {
+    opacity: 1;
+    border-radius: 0.5rem;
+    padding: 2px 2px 2px 6px;
+    color: @gold;
+}
+
+#cpu {
+    opacity: 1;
+    border-radius: 0.5rem;
+    padding: 2px 2px 2px 6px;
+    color: @rose;
+}
+
+#temperature {
+    opacity: 1;
+    border-radius: 0.5rem;
+    padding: 2px 2px 2px 6px;
+    color: @foam;
+}
+
+#clock {
+    opacity: 1;
+    border-radius: 0.5rem;
+    padding: 2px 2px 2px 6px;
+    color: @iris;
+}
