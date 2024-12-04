@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
+keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- find and replace in file
@@ -47,4 +49,3 @@ keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Write and quit buffer", norem
 
 -- file management
 keymap.set('n', '<leader>df', ':!rm %<CR>:bd!<CR>', { noremap = true, silent = true })
-

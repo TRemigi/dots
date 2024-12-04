@@ -10,33 +10,6 @@ return {
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
-    lspconfig.dartls.setup({
-      cmd = { "dart", "language-server", "--protocol=lsp" },
-      filetypes = { "dart" },
-      init_options = {
-        closingLabels = true,
-        flutterOutline = true,
-        onlyAnalyzeProjectsWithOpenFiles = true,
-        outline = true,
-        suggestFromUnimportedLibraries = true,
-      },
-      root_dir = lspconfig.util.root_pattern("pubspec.yaml"),
-      settings = {
-        dart = {
-          completeFunctionCalls = true,
-          showTodos = true,
-        },
-      },
-      -- on_attach = function(client, bufnr)
-      -- end,
-    })
-
-    lspconfig.intelephense.setup({
-      init_options = {
-        licenceKey = "~/intelephense/license.txt"
-      };
-    })
-
     -- import mason_lspconfig plugin
     local mason_lspconfig = require("mason-lspconfig")
 
