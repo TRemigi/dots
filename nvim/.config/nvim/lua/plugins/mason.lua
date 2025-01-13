@@ -30,7 +30,7 @@ return {
       },
     })
 
-    vim.lsp.set_log_level("debug")
+    -- vim.lsp.set_log_level("debug")
 
     require("mason-lspconfig").setup_handlers {
       -- The first entry (without a key) will be the default handler
