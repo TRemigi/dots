@@ -1,1 +1,5 @@
 theme = rose-pine
+font-family = "Hack Nerd Font Mono Regular"
+# background-opacity = 0.96
+mouse-hide-while-typing = true
+macos-titlebar-style = transparent
