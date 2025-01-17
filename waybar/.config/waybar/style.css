@@ -23,7 +23,7 @@ window#waybar {
 
 .modules-left, .modules-center, .modules-right {
     opacity: 1;
-    background: @base;
+    background: @overlay;
     border-radius: 0.5rem;
     padding: 2px;
     color: @rose;
@@ -31,7 +31,7 @@ window#waybar {
 }
 
 #workspaces {
-    background-color: @base;
+    background-color: @overlay;
     border-radius: 0.5rem;
     padding: 0 2px;
     color: @gold;
