@@ -42,6 +42,11 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
+          no_ignore = true,
+				},
+				live_grep = {
+					hidden = true,
+          no_ignore = true,
 				},
 				current_buffer_fuzzy_find = {
 					tiebreak = function(current_entry, existing_entry)

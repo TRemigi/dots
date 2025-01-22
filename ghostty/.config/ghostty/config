@@ -1,0 +1,10 @@
+theme = rose-pine
+window-padding-color = background
+window-decoration = false
+
+font-family = "Hack Nerd Font Mono"
+font-size = 14
+
+cursor-style = block
+
+fullscreen = false
