@@ -84,7 +84,8 @@
             "default": "",
             "urgent": "",
             "special": "󰠱"
-        }
+        },
+      "sort-by-number": true
     },
 
     "hyprland/window": {
