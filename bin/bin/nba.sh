@@ -68,8 +68,8 @@ do
   if [[ -n ${RESULTS} ]]; then
     NUM_AFFECTED_PROJECTS=$(($NUM_AFFECTED_PROJECTS+1))
     if [[  "$QUIET" = false ]]; then
-      printf "\n$PROJ:\n" >> $OUTPUT_DIR/report.txt
-      echo $RESULTS >> $OUTPUT_DIR/report.txt
+      printf "\n$PROJ:\n" >> "$OUTPUT_DIR"/report_"$NOW".txt
+      echo $RESULTS >> $OUTPUT_DIR/report_$NOW.txt
     fi
   fi
 done
@@ -79,8 +79,8 @@ if [[  "$QUIET" = false ]]; then
   echo "NBA scan complete"
   printf "##################################################\n"
   echo "$NUM_AFFECTED_PROJECTS projects with $AUDIT_LEVEL vulnerabilities found"
-  cat $OUTPUT_DIR/report.txt
-  printf "\nThis report is stored at $OUTPUT_DIR/report.txt"
+  cat $OUTPUT_DIR/report_$NOW.txt
+  printf "\nThis report is stored at $OUTPUT_DIR/report_$NOW.txt"
 else
   echo "$NUM_AFFECTED_PROJECTS"
 fi

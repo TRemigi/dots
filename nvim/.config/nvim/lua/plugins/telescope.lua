@@ -42,7 +42,7 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
-          no_ignore = true,
+          no_ignore = false,
 				},
 				live_grep = {
 					hidden = true,
@@ -68,9 +68,14 @@ return {
 		keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 		keymap.set("n", "<leader>fC", builtin.commands, { desc = "Telescope commands" })
-		keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Telescope git status" })
 		keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
 		keymap.set("n", "<leader>fc", builtin.grep_string)
 		keymap.set("n", "<leader>fq", builtin.quickfix)
+		keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Telescope git status" })
+		keymap.set("n", "<leader>gh", builtin.git_stash, { desc = "Telescope git stash" })
+		keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Telescope git branches" })
+		keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Telescope git commits" })
+		keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, { desc = "Telescope document symbols" })
+		keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
 	end,
 }
