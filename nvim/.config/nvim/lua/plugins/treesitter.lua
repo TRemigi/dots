@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-  -- event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -23,6 +23,12 @@ return {
 				"json",
 				"hyprlang",
 				"sql",
+				"vim",
+				"regex",
+				"lua",
+				"bash",
+				"markdown",
+				"markdown_inline",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)

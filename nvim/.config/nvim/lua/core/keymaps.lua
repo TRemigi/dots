@@ -6,9 +6,6 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
--- command line
-vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
-
 -- find and replace in file
 vim.api.nvim_create_user_command('Fr', function()
   -- Prompt the user for the search string
