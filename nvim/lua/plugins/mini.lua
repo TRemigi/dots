@@ -15,8 +15,8 @@ return {
 		require("mini.indentscope").setup({
 			options = { indent_at_cursor = false },
 		})
-    require('mini.starter').setup()
-    require('mini.trailspace').setup()
+    -- require('mini.starter').setup()
+    -- require('mini.trailspace').setup()
 
     local miniclue = require("mini.clue")
 		miniclue.setup({

@@ -26,6 +26,6 @@ return {
 				async = false,
 				timeout_ms = 500,
 			})
-		end)
+		end, { desc = "Conform format"})
 	end,
 }
