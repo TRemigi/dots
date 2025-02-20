@@ -53,13 +53,13 @@ style = "bg:overlay fg:foam"
 symbol = ""
 
 [git_status]
-disabled = true
+disabled = false
 style = "bg:overlay fg:love"
 format = '[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay)'
 up_to_date = '[ ✓ ](bg:overlay fg:iris)'
-untracked = '[?\($count\)](bg:overlay fg:gold)'
-stashed = '[$](bg:overlay fg:iris)'
-modified = '[!\($count\)](bg:overlay fg:gold)'
+untracked = '[\($count\)](bg:overlay fg:gold)'
+stashed = '[󰓎](bg:overlay fg:iris)'
+modified = '[\($count\)](bg:overlay fg:gold)'
 renamed = '[»\($count\)](bg:overlay fg:iris)'
 deleted = '[✘\($count\)](style)'
 staged = '[++\($count\)](bg:overlay fg:gold)'
@@ -76,7 +76,7 @@ use_12hr = true
 
 [username]
 disabled = false
-format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay)"
+format = "[](fg:overlay)[  $user ]($style)[](fg:overlay)"
 show_always = true
 style_root = "bg:overlay fg:iris"
 style_user = "bg:overlay fg:iris"
