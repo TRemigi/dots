@@ -27,7 +27,9 @@ return {
 		statuscolumn = { enabled = true },
 		quickfile = { enabled = true },
 		-- words = { enabled = true },
-		zen = { enabled = true },
+		zen = { enabled = true, plugins = {
+			tmux = { enabled = false },
+		} },
 		-- styles = {
 		--   notification = {
 		--     wo = { wrap = true } -- Wrap notifications
