@@ -26,7 +26,7 @@ return {
 		},
 		statuscolumn = { enabled = true },
 		quickfile = { enabled = true },
-		-- words = { enabled = true },
+		words = { enabled = true },
 		zen = { enabled = true, plugins = {
 			tmux = { enabled = false },
 		} },
