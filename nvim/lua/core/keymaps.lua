@@ -47,4 +47,6 @@ keymap.set("n", "<leader>ww", ":w<CR>", { desc = "Write file", noremap = true, s
 keymap.set("n", "<leader>qq", ":q<CR>", { desc = "Quit buffer", noremap = true, silent = true })
 
 -- file management
-keymap.set('n', '<leader>df', ':!rm %<CR>:bd!<CR>', { noremap = true, silent = true })
+keymap.set('n', '<leader>df', ':!rm %<CR>:bd!<CR>', { desc = "Delete current file and buffer", noremap = true, silent = true })
+keymap.set('n', '<leader>go', ':!go build %<CR>', { desc = "Build current go module", noremap = true, silent = true })
+keymap.set('n', '<leader>gx', ':vsplit | vertical resize 40 | terminal bash -c "%:t:r; exec bash"<CR>', { desc = "Execute go package with name matching current file", noremap = true, silent = true })
