@@ -10,7 +10,7 @@ return {
 			sections = {
 				{
 					section = "terminal",
-					cmd = "chafa ~/Pictures/wallpaper/anime-forest.avif --format symbols --symbols vhalf --size 110x31 --stretch; sleep .1",
+					cmd = "chafa ~/dots/wallpaper/anime-forest.avif --format symbols --symbols vhalf --size 110x31 --stretch; sleep .1",
 					height = 31,
 					padding = 1,
 				},
