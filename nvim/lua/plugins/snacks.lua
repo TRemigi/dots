@@ -6,19 +6,23 @@ return {
 	opts = {
 		-- bigfile = { enabled = true },
 		dashboard = {
-			enabled = true,
 			sections = {
+				{ section = "header" },
+				{ section = "keys", gap = 1, padding = 1 },
+				{ section = "startup" },
 				{
 					section = "terminal",
-					cmd = "chafa ~/dots/wallpaper/anime-forest.avif --format symbols --symbols vhalf --size 110x31 --stretch; sleep .1",
-					height = 31,
-					padding = 1,
+					cmd = "pokemon-colorscripts -r 1 --no-title; sleep .1",
+					random = 151,
+					pane = 2,
+					indent = 4,
+					height = 30,
 				},
-				{ section = "header", pane = 2 },
-				{ section = "keys", gap = 1, padding = 1, pane = 2 },
 			},
 		},
+		dim = { enabled = true },
 		-- explorer = { enabled = true },
+		image = { enabled = true },
 		lazygit = { enabled = true },
 		notifier = {
 			enabled = true,
