@@ -14,8 +14,13 @@ opt.cursorline = true
 opt.cursorlineopt = "number"
 
 -- fold
-opt.foldmethod = "indent"
 opt.foldenable = false
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 99
+opt.foldlevelstart = 2
+opt.foldnestmax = 4
+opt.foldcolumn = "0"
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)

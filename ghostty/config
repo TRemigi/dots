@@ -6,7 +6,8 @@ background-blur = 20
 cursor-style = block
 fullscreen = false
 
-font-family = "GoMono Nerd Font Regular"
+font-family = "JetBrainsMono Nerd Font"
+
 font-size = 12
 
 mouse-hide-while-typing = true

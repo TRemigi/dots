@@ -83,6 +83,7 @@ plugins=(
   docker
   docker-compose
   golang
+  zsh-autosuggestions
   jsontools
 )
 

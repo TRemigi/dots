@@ -22,7 +22,7 @@ window {
   background: alpha(@overlay,.8);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
   opacity: 1;
-  font-family: "Hack NF";
+  font-family: "JetBrainsMono Nerd Font";
 }
 
 .modules-left, .modules-right {
