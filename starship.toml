@@ -36,20 +36,20 @@ foam = '#9ccfd8'
 iris = '#c4a7e7'
 
 [username]
-disabled = true
+disabled = false
 format = "[\ue0d4](fg:rose)[  $user]($style)"
 show_always = true
 style_root = "bg:rose fg:overlay"
 style_user = "bg:rose fg:overlay"
 
 [hostname]
-disabled = true
+disabled = false
 format = "[@$hostname ]($style)[\ue0b0](fg:rose)"
 style = "bg:rose fg:overlay"
 ssh_only = false
 
 [directory]
-format = "[\ue0d4](fg:overlay)[  $path ]($style)[\ue0cc](fg:overlay)"
+format = "[\ue0d4](fg:overlay)[ $path ]($style)[\ue0b0](fg:overlay)"
 style = "bg:overlay fg:gold"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -65,28 +65,28 @@ style = "fg:overlay"
 symbol = " "
 
 [git_branch]
-format = "[ \ue0d4](fg:rose)[ $symbol $branch ]($style)[\ue0cc](fg:rose)"
+format = "[\ue0d4](fg:rose)[ $symbol $branch ]($style)[\ue0b0](fg:rose)"
 style = "bg:rose fg:overlay"
 symbol = ""
 
 [git_status]
 disabled = false
 style = "bg:overlay fg:love"
-format = "[ \ue0d4](fg:overlay)([ $all_status$ahead_behind]($style))[\ue0b0](fg:overlay)"
-up_to_date = '[✓ ](bg:overlay fg:iris)'
-untracked = '[\($count\) ](bg:overlay fg:gold)'
-stashed = '[󰓎\($count\) ](bg:overlay fg:iris)'
-modified = '[\($count\) ](bg:overlay fg:gold)'
-renamed = '[»\($count\) ](bg:overlay fg:iris)'
-deleted = '[✘\($count\) ](style)'
-staged = '[++\($count\) ](bg:overlay fg:gold)'
-ahead = '[⇡\($count\) ](bg:overlay fg:foam)'
-diverged = '⇕ [\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
-behind = '[⇣\($count\) ](bg:overlay fg:rose)'
+format = "[\ue0d4](fg:overlay)([ $all_status$ahead_behind]($style))[\ue0b0](fg:overlay)"
+up_to_date = '[✓](bg:overlay fg:iris)'
+untracked = '[󰡯 $count ](bg:overlay fg:love)'
+stashed = '[󰜦 $count ](bg:overlay fg:pine)'
+modified = '[ $count ](bg:overlay fg:rose)'
+renamed = '[»$count ](bg:overlay fg:iris)'
+deleted = '[󰆴$count ](style)'
+staged = '[󱡠 $count ](bg:overlay fg:foam)'
+ahead = '[󰶼$count ](bg:overlay fg:foam)'
+diverged = '[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
+behind = '[󰶹$count ](bg:overlay fg:rose)'
 
 [aws]
 disabled = false
-format = "[](fg:rose)[\uef2c ]($style)[$region]($style)[$duration]($style)[\ue0d2](fg:rose)"
+format = "[](fg:rose)[ \uef2c ]($style)[$region]($style)[$duration ]($style)[\ue0d2](fg:rose)"
 style = "bg:rose fg:overlay"
 force_display = true
 

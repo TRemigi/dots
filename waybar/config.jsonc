@@ -4,7 +4,7 @@
   "layer": "top",
   "position": "top",
 
-  "height": 10,
+  "height": 24,
 
   "spacing": 10,
 
@@ -71,7 +71,7 @@
 
   "clock": {
     "interval":1,
-    "format": "{:%I:%M:%S}"
+    "format": "{:%I:%M:%S %m/%d/%y}"
   },
 
   "privacy": {
