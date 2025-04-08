@@ -4,14 +4,24 @@ require("config.lazy")
 local opt = vim.opt
 
 -- Vim configurations
-vim.api.nvim_set_keymap('n', '<leader>w', ':set wrap!<CR>', { noremap = true, silent = true })
-vim.g.loaded_netrw       = 1
+vim.api.nvim_set_keymap("n", "<leader>w", ":set wrap!<CR>", { noremap = true, silent = true })
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 vim.wo.relativenumber = true
 opt.number = true
 opt.cursorline = true
 opt.cursorlineopt = "number"
+-- vim.diagnostic.config({
+-- 	-- Use the default configuration
+-- 	-- virtual_lines = true
+--
+-- 	-- Alternatively, customize specific options
+-- 	virtual_lines = {
+-- 		-- Only show virtual line diagnostics for the current cursor line
+-- 		current_line = true,
+-- 	},
+-- })
 
 -- fold
 opt.foldenable = false
