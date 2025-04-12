@@ -19,9 +19,9 @@
   "modules-right": [
     "wireplumber",
     "battery",
-    "cpu",
+    // "cpu",
     "privacy",
-    "backlight",
+    // "backlight",
     "network",
     "clock",
   ],
@@ -71,7 +71,7 @@
 
   "clock": {
     "interval":1,
-    "format": "{:%I:%M:%S %m/%d/%y}"
+    "format": "{:%I:%M:%S}"
   },
 
   "privacy": {

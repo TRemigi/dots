@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
 export NVM_DIR="$HOME/.nvm"
+export HISTSIZE=10000
 export WAYLAND_DISPLAY=wayland-1
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -131,9 +132,14 @@ bindkey -s ^n "nvim \n"
 ###############
 ### Aliases ###
 ###############
+alias dc='docker compose'
 alias jt='docker run -it --network "host" --rm -v "${PWD}:/tmp" -v "${HOME}/.jwt_tool:/root/.jwt_tool" ticarpi/jwt_tool'
+alias plog="sed 's/^[^{]*//' | jq"
 
 ################
 ### Starship ###
 ################
 eval "$(starship init zsh)"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+. /usr/share/nvm/init-nvm.sh
