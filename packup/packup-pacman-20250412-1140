@@ -15,7 +15,7 @@
 #LogFile     = /var/log/pacman.log
 #GPGDir      = /etc/pacman.d/gnupg/
 #HookDir     = /etc/pacman.d/hooks/
-HoldPkg     = pacman glibc dracut kernel-install-for-dracut eos-dracut
+HoldPkg     = pacman glibc
 #XferCommand = /usr/bin/curl -L -C - -f -o %o %u
 #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
 #CleanMethod = KeepInstalled
@@ -33,8 +33,8 @@ Architecture = auto
 Color
 ILoveCandy
 #NoProgressBar
-#CheckSpace
-VerbosePkgLists
+CheckSpace
+#VerbosePkgLists
 ParallelDownloads = 5
 DownloadUser = alpm
 #DisableSandbox
@@ -72,10 +72,6 @@ LocalFileSigLevel = Optional
 # repo name header and Include lines. You can add preferred servers immediately
 # after the header, and they will be used before the default mirrors.
 
-[endeavouros]
-SigLevel = PackageRequired
-Include = /etc/pacman.d/endeavouros-mirrorlist
-
 #[core-testing]
 #Include = /etc/pacman.d/mirrorlist
 
@@ -94,8 +90,8 @@ Include = /etc/pacman.d/mirrorlist
 #[multilib-testing]
 #Include = /etc/pacman.d/mirrorlist
 
-[multilib]
-Include = /etc/pacman.d/mirrorlist
+#[multilib]
+#Include = /etc/pacman.d/mirrorlist
 
 # An example of a custom package repository.  See the pacman manpage for
 # tips on creating your own repositories.
