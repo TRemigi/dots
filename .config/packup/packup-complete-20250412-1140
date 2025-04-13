@@ -47,6 +47,7 @@ ffmpegthumbnailer
 file-roller
 firefox
 firewalld
+fzf
 ghostty
 gifsicle
 git
@@ -131,6 +132,7 @@ npm
 nss-mdns
 ntfs-3g
 ntp
+nvm
 obs-studio
 openssh
 otf-aurulent-nerd
@@ -148,8 +150,6 @@ otf-overpass-nerd
 packup
 pacman-contrib
 pavucontrol
-php83
-php83-cli
 phpactor
 pipewire
 pipewire-alsa
@@ -192,6 +192,7 @@ sysfsutils
 tableplus
 tldr
 tmux
+tmux-package-manager
 traceroute
 ttf-0xproto-nerd
 ttf-3270-nerd

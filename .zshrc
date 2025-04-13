@@ -85,11 +85,12 @@ plugins=(
   docker
   docker-compose
   golang
-  zsh-autosuggestions
   jsontools
 )
 
-source ~/.hiddenrc
+if [ -f "$HOME/.hiddenrc" ]; then
+  source ~/.hiddenrc
+fi
 source $ZSH/oh-my-zsh.sh
 source <(fzf --zsh)
 
