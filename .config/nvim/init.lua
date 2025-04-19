@@ -11,7 +11,6 @@ vim.g.mapleader = " "
 vim.wo.relativenumber = true
 opt.number = true
 opt.cursorline = true
-opt.cursorlineopt = "number"
 -- vim.diagnostic.config({
 -- 	-- Use the default configuration
 -- 	-- virtual_lines = true
@@ -22,15 +21,6 @@ opt.cursorlineopt = "number"
 -- 		current_line = true,
 -- 	},
 -- })
-
--- fold
-opt.foldenable = false
-opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldlevel = 99
-opt.foldlevelstart = 2
-opt.foldnestmax = 4
-opt.foldcolumn = "0"
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)

@@ -1,0 +1,58 @@
+# base #191724;
+# surface #1f1d2e;
+# overlay #26233a;
+# muted #6e6a86;
+# subtle #908caa;
+# text #e0def4;
+# love #eb6f92;
+# gold #f6c177;
+# rose #ebbcba;
+# pine #31748f;
+# foam #9ccfd8;
+# iris #c4a7e7;
+# highlightLow #21202e;
+# highlightMed #403d52;
+# highlightHigh #524f67;
+
+screenshots
+hide-keyboard-layout
+clock
+
+# indicator
+indicator
+indicator-radius=200
+indicator-thickness=7
+
+# effects
+effect-blur=7x5
+effect-vignette=0.5:0.5
+fade-in=0.2
+
+# ring
+ring-color=31748f
+ring-wrong-color=eb6f92
+ring-ver-color=f6c177
+
+# inside
+inside-color=191724
+inside-clear-color=191724
+inside-ver-color=191724
+inside-wrong-color=eb6f92
+
+# line
+line-color=00000000
+
+# highlights
+key-hl-color=9ccfd8
+caps-lock-key-hl-color=9ccfd8
+bs-hl-color=eb6f92
+caps-lock-bs-hl-color=eb6f92
+
+# font
+font=Hack Nerd Font Mono
+
+# text
+text-color=f6c177
+
+# separator
+separator-color=00000000

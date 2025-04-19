@@ -1,0 +1,24 @@
+return {
+  "nvim-neotest/neotest",
+  dependencies = {
+    "nvim-neotest/nvim-nio",
+    "nvim-lua/plenary.nvim",
+    "antoinemadec/FixCursorHold.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "olimorris/neotest-phpunit",
+  },
+  config = function()
+    require("neotest").setup({
+      adapters = {
+        require("neotest-phpunit")({
+          phpunit_cmd = function()
+            return "docker-test-api"
+          end,
+          cwd = function()
+            return "/app"
+          end,
+        }),
+      },
+    })
+  end,
+}
