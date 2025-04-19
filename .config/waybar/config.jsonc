@@ -10,7 +10,7 @@
 
   "mode": "top",
 
-  "output": "eDP-1",
+  "output": ["eDP-1", "DP-2"],
 
   "reload_style_on_change": true,
 
@@ -23,6 +23,7 @@
     "privacy",
     // "backlight",
     "network",
+    "bluetooth",
     "clock",
   ],
 

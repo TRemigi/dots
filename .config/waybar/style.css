@@ -104,6 +104,13 @@ window {
   color: @pine;
 }
 
+#bluetooth {
+  opacity: 1;
+  border-radius: 0.5rem;
+  padding: 2px 2px 2px 6px;
+  color: @pine;
+}
+
 #backlight {
   opacity: 1;
   border-radius: 0.5rem;
