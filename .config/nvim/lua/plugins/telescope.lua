@@ -58,23 +58,5 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-
-		-- set keymaps
-		local keymap = vim.keymap -- for conciseness
-		local builtin = require("telescope.builtin")
-
-		keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
-		keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find string in cwd" })
-		keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-		keymap.set("n", "<leader>fC", builtin.commands, { desc = "Telescope commands" })
-		keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Grep string under cursor"})
-		keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "Telescope quickfix list"})
-		keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Telescope git status" })
-		keymap.set("n", "<leader>gh", builtin.git_stash, { desc = "Telescope git stash" })
-		keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Telescope git branches" })
-		keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Telescope git commits" })
-		keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, { desc = "Telescope document symbols" })
-		keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
 	end,
 }
