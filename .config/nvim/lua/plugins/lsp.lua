@@ -141,7 +141,15 @@ return {
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			local lspconfig = require("lspconfig")
-			lspconfig["lua_ls"].setup({ capabilities = capabilities })
+			for name, opts in pairs(servers) do
+				if opts ~= true and opts ~= false then
+					lspconfig[name].setup(vim.tbl_deep_extend("force", {
+						capabilities = capabilities,
+					}, opts))
+				elseif opts == true then
+					lspconfig[name].setup({ capabilities = capabilities })
+				end
+			end
 
 			local disable_semantic_tokens = {
 				lua = true,
