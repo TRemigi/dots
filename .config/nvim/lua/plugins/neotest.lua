@@ -23,6 +23,7 @@ return {
 				passed = "",
 				failed = "",
 			},
+			log_level = vim.log.levels.WARN,
 		})
 
 		-- Because we're running tests in a container, the output doesn't make it back
