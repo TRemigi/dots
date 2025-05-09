@@ -25,16 +25,17 @@ return {
 			conform.setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					css = { "prettier" },
-					html = { "prettier" },
-					json = { "prettier" },
-					yaml = { "prettier" },
-					markdown = { "prettier" },
+					javascript = { "prettierd" },
+					typescript = { "prettierd" },
+					css = { "prettierd" },
+					html = { "prettierd" },
+					json = { "prettierd" },
+					yaml = { "prettierd" },
+					markdown = { "prettierd" },
 				},
 			})
 
+			local lspconfig = require("lspconfig")
 			local servers = {
 				bashls = true,
 				gopls = {
@@ -53,14 +54,37 @@ return {
 						},
 					},
 				},
+				denols = {
+					root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+				},
+				laravel_ls = {
+					root_dir = require("lspconfig.util").root_pattern("artisan", "composer.json", ".git"),
+					manual_install = true,
+				},
 				lua_ls = {
 					server_capabilities = {
 						semanticTokensProvider = vim.NIL,
 					},
 				},
-				intelephense = true,
+				intelephense = vim.fn.filereadable("artisan") == 1 and false or {
+					root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
+					settings = {
+						intelephense = {
+							files = {
+								maxSize = 1000000,
+								exclude = {
+									"**/node_modules/**",
+									"**/.git/**",
+									"**/storage/**",
+									"**/coverage/**",
+									"**/tests/_support/_generated/**",
+								},
+							},
+						},
+					},
+				},
 				phpactor = {
-					root_dir = require("lspconfig").util.root_pattern("composer.json", ".git"),
+					root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
 					server_capabilities = {
 						completionProvider = false,
 						hoverProvider = false,
@@ -84,6 +108,8 @@ return {
 					server_capabilities = {
 						documentFormattingProvider = false,
 					},
+					root_dir = lspconfig.util.root_pattern("package.json"),
+					single_file_support = false,
 				},
 				jsonls = {
 					server_capabilities = {
@@ -129,10 +155,11 @@ return {
 			vim.lsp.set_log_level("ERROR")
 
 			local ensure_installed = {
-				"stylua",
-				"lua_ls",
 				"gopls",
+				"lua_ls",
+				"stylua",
 				"vtsls",
+				-- "laravel_ls", add this back in when Mason is updated to include it
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -140,7 +167,7 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local lspconfig = require("lspconfig")
+			local lspconfig = lspconfig
 			for name, opts in pairs(servers) do
 				if opts ~= true and opts ~= false then
 					lspconfig[name].setup(vim.tbl_deep_extend("force", {

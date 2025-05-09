@@ -32,7 +32,11 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true, hidden = true, },
+		picker = {
+			enabled = true,
+			hidden = true,
+      ignored = true,
+		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = true },
@@ -43,9 +47,9 @@ return {
 				wo = { wrap = true }, -- Wrap notifications
 			},
 		},
-    toggle = {
-      enabled = true,
-    },
+		toggle = {
+			enabled = true,
+		},
 		zen = {
 			plugins = {
 				tmux = { enabled = true },
