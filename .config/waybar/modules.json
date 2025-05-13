@@ -24,7 +24,8 @@
       "class<Spotify>": "",
       "class<Slack>": "󰒱",
       "class<Postman>": "",
-      "class<TablePlus>": ""
+      "class<TablePlus>": "",
+      "class<zoom>": "󰍫"
     }
   },
   "custom/swaync": {

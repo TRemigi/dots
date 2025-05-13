@@ -1,8 +1,8 @@
 theme = rose-pine
 window-padding-color = background
 window-decoration = false
-background-opacity = 0.95
-background-blur = 20
+background-opacity = 0.92
+background-blur = 0
 cursor-style = block
 fullscreen = false
 
