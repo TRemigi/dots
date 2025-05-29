@@ -24,6 +24,7 @@ cronie
 curlie
 datagrip
 datagrip-jre
+deno
 dhcpcd
 discord
 dmidecode
@@ -47,7 +48,6 @@ ffmpegthumbnailer
 file-roller
 firefox
 firewalld
-fzf
 ghostty
 gifsicle
 git
@@ -62,6 +62,7 @@ gnome-tweaks
 gnome-usage
 go
 godot
+google-chrome
 grim
 gst-libav
 gst-plugin-pipewire
@@ -81,6 +82,7 @@ hyprpolkitagent
 hyprshot
 inetutils
 intel-media-driver
+interception-tools
 inxi
 iptables-nft
 iwd
@@ -105,6 +107,7 @@ lvm2
 mako
 man-db
 man-pages
+mariadb-clients
 meld
 mesa-utils
 mgba-qt
@@ -132,7 +135,6 @@ npm
 nss-mdns
 ntfs-3g
 ntp
-nvm
 obs-studio
 openssh
 otf-aurulent-nerd
@@ -141,6 +143,7 @@ otf-comicshanns-nerd
 otf-commit-mono-nerd
 otf-droid-nerd
 otf-firamono-nerd
+otf-font-awesome
 otf-geist-mono-nerd
 otf-hasklig-nerd
 otf-hermit-nerd
@@ -149,13 +152,16 @@ otf-opendyslexic-nerd
 otf-overpass-nerd
 packup
 pacman-contrib
+pass
 pavucontrol
 phpactor
 pipewire
 pipewire-alsa
+pipewire-docs
 pipewire-jack
 pipewire-pulse
 pkgfile
+playerctld-systemd-unit
 plocate
 pokemon-colorscripts-git
 polkit-kde-agent
@@ -163,7 +169,9 @@ poppler-glib
 postman-bin
 power-profiles-daemon
 powerline-fonts
+powertop
 pv
+pwvucontrol
 python-capng
 python-defusedxml
 python-pyqt5
@@ -181,19 +189,23 @@ sg3_utils
 slack-desktop
 slurp
 smartmontools
+smem
 sof-firmware
+sonusmix
 spicetify-cli
 spicetify-themes-git
 spotify-launcher
 starship
 stow
 swaylock-effects-git
+swaync
 sysfsutils
 tableplus
 tldr
 tmux
-tmux-package-manager
+tmux-plugin-manager
 traceroute
+tree-sitter-cli
 ttf-0xproto-nerd
 ttf-3270-nerd
 ttf-agave-nerd
@@ -212,6 +224,7 @@ ttf-dejavu-nerd
 ttf-envycoder-nerd
 ttf-fantasque-nerd
 ttf-firacode-nerd
+ttf-font-awesome
 ttf-go-nerd
 ttf-gohu-nerd
 ttf-hack-nerd
@@ -257,6 +270,7 @@ unrar
 unzip
 usb_modeswitch
 usbutils
+uwsm
 v4l2loopback-dkms
 vi
 vim
@@ -268,6 +282,7 @@ wireguard-tools
 wireless_tools
 wireplumber
 wl-clipboard
+wlogout
 wofi
 wpa_supplicant
 xdg-desktop-portal-hyprland
@@ -287,7 +302,7 @@ xorg-xkill
 xorg-xrandr
 xterm
 yay-bin
-yay-bin-debug
+zen-browser-bin
 zoom
 zram-generator
 zsh

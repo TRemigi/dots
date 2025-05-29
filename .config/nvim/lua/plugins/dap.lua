@@ -1,27 +1,46 @@
 return {
-	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
+	dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 	config = function()
-		local dap = require("dap")
-		-- require("telescope").load_extension("dap")
+		local dap, dapui = require("dap"), require("dapui")
+		dap.listeners.before.attach.dapui_config = function()
+			dapui.open()
+		end
+		dap.listeners.before.launch.dapui_config = function()
+			dapui.open()
+		end
+		dap.listeners.before.event_terminated.dapui_config = function()
+			dapui.close()
+		end
+		dap.listeners.before.event_exited.dapui_config = function()
+			dapui.close()
+		end
 
 		dap.adapters.php = {
 			type = "executable",
 			command = "node",
 			args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
 		}
-
 		dap.configurations.php = {
 			{
 				type = "php",
 				request = "launch",
 				name = "Listen for Xdebug",
 				port = 9003,
+				pathMappings = {
+					["/app"] = vim.fn.getcwd(), -- or the actual host path to your Laravel project
+				},
 			},
 		}
+
+		dapui.setup()
 
 		local keymap = vim.keymap
 		keymap.set("n", "<leader>dc", function()
 			dap.continue()
+		end)
+		vim.keymap.set("n", "<leader>dq", function()
+			require("dapui").close()
 		end)
 		keymap.set("n", "<leader>do", function()
 			dap.step_over()

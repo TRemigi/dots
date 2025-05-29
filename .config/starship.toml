@@ -7,19 +7,7 @@ $directory\
 $git_branch\
 $git_status\
 $fill\
-$c\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$php\
-$nim\
-$rust\
-$scala\
-$python\
+$kubernetes\
 $aws\
 $time\n \
 [󱞪 ](fg:iris)
@@ -91,6 +79,15 @@ format = "[](fg:rose)[ \uef2c ]($style)[$region]($style)[$duration ]($style)[
 style = "bg:rose fg:overlay"
 force_display = true
 
+[kubernetes]
+style = "bg:overlay fg:pine"
+format = "[](fg:overlay)($style)[ $context ]($style)[\ue0d2](fg:overlay)"
+disabled = false
+symbol = "󱃾 "
+contexts = [
+  { context_pattern = "arn:aws:eks:us-east-1:196375513521:cluster/production-corp", context_alias = "󱃾 production"},
+]
+
 [time]
 disabled = false
 format = "[](fg:overlay)[ $time 󰣇 ]($style)(fg:rose)[\ue0d2](fg:overlay)"
@@ -101,33 +98,15 @@ use_12hr = true
 # Languages
 [c]
 style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[ \ue0d4](fg:overlay)"
+format = "[](fg:overlay)[$symbol$version]($style)[ \ue0d2](fg:overlay)"
 disabled = false
 symbol = " "
-
-[elixir]
-style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[\ue0d2](fg:overlay)"
-disabled = false
-symbol = " "
-
-[elm]
-style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[\ue0d2](fg:overlay)"
-disabled = false
-symbol = " "
 
 [golang]
 style = "bg:overlay fg:pine"
 format = "[](fg:overlay)[$symbol$version]($style)[\ue0d2](fg:overlay)"
 disabled = false
 symbol = " "
-
-[java]
-style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[\ue0d2](fg:overlay)"
-disabled = false
-symbol = " "
 
 [nodejs]
 style = "bg:overlay fg:pine"
@@ -146,12 +125,6 @@ style = "bg:overlay fg:pine"
 format = "[](fg:overlay)[$symbol$version]($style)[\ue0d2](fg:overlay)"
 disabled = false
 symbol = " "
-
-[nim]
-style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[\ue0d2](fg:overlay)"
-disabled = false
-symbol = "󰆥 "
 
 [rust]
 style = "bg:overlay fg:pine"

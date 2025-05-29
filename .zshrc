@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export GOPATH="$HOME/go/bin"
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/jwt_tool/jwt_tool.py:$GOPATH
+export GOPATH="$HOME/go"
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/jwt_tool/jwt_tool.py:$GOPATH/bin
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"

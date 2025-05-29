@@ -10,9 +10,40 @@ return {
 		"DBUIAddConnection",
 		"DBUIFindBuffer",
 	},
-	init = function()
+	keys = {
+		{ "<leader>mu", "<cmd>DBUIToggle<CR>", desc = "Toggle DB UI" },
+		{ "<leader>mr", "<cmd>DB<CR>", desc = "Run SQL query" },
+		{ "<leader>ma", "<cmd>DBUIAddConnection<CR>", desc = "Add DB connection" },
+		{ "<leader>mf", "<cmd>DBUIFindBuffer<CR>", desc = "Find DB buffer" },
+		{
+			"<leader>mt",
+			function()
+				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+					local name = vim.api.nvim_buf_get_name(buf)
+					if name:match("^dbui:///results") then
+						if vim.api.nvim_buf_is_loaded(buf) then
+							for _, win in ipairs(vim.api.nvim_list_wins()) do
+								if vim.api.nvim_win_get_buf(win) == buf then
+									vim.api.nvim_win_close(win, true)
+									return
+								end
+							end
+							vim.cmd("sbuffer " .. buf)
+							return
+						end
+					end
+				end
+			end,
+			desc = "Toggle DBUI Results Buffer",
+		},
+	},
+	config = function()
 		vim.g.db_ui_use_nerd_fonts = 1
 		vim.g.dadbod_mysql_cli = "mariadb"
+		local ok = pcall(require, "lazy.core.loader")
+		if ok then
+			require("lazy.core.loader").load("vim-dadbod-completion")
+		end
 
 		--- Helper to get pass secret
 		local function get_pass_connection(path)

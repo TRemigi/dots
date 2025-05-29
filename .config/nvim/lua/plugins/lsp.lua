@@ -2,13 +2,6 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{
-				-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-				-- used for completion, annotations and signatures of Neovim apis
-				"folke/lazydev.nvim",
-				ft = "lua",
-				"saghen/blink.cmp",
-			},
 			{ "Bilal2453/luvit-meta", lazy = true },
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
@@ -18,8 +11,6 @@ return {
 			"stevearc/conform.nvim",
 		},
 		config = function()
-			-- start up lazydev
-			require("lazydev").setup({})
 			-- Formatters
 			local conform = require("conform")
 			conform.setup({

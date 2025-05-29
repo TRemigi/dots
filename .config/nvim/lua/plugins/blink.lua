@@ -43,7 +43,7 @@ return {
 				sql = { "dadbod" },
 			},
 			providers = {
-        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+        dadbod = { module = "vim_dadbod_completion.blink" },
 			},
 		},
 
