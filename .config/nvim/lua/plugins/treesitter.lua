@@ -1,7 +1,9 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+  dependencies = {"LiadOz/nvim-dap-repl-highlights"},
 	build = ":TSUpdate",
 	config = function()
+    require('nvim-dap-repl-highlights').setup()
 		require("nvim-treesitter.configs").setup({
 			-- A list of parser names, or "all"
 			ensure_installed = {
@@ -10,6 +12,7 @@ return {
 				"c",
 				"css",
 				"dart",
+        "dap_repl",
 				"dockerfile",
 				"dot",
 				"go",

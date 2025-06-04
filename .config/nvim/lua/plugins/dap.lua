@@ -1,19 +1,37 @@
 return {
-	"rcarriga/nvim-dap-ui",
-	dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+	"mfussenegger/nvim-dap",
+	dependencies = {
+		{
+			---@module 'dap-view'
+			---@type dapview.Config
+			"igorlfs/nvim-dap-view",
+			opts = {
+				windows = {
+					terminal = {
+						-- Use the actual names for the adapters you want to hide
+						hide = { "go", "php" }, -- `go` is known to not use the terminal.
+					},
+				},
+			},
+		},
+		"nvim-neotest/nvim-nio",
+	},
 	config = function()
-		local dap, dapui = require("dap"), require("dapui")
-		dap.listeners.before.attach.dapui_config = function()
-			dapui.open()
+		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+		vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+
+		local dap, dv = require("dap"), require("dap-view")
+		dap.listeners.before.attach["dap-view-config"] = function()
+			dv.open()
 		end
-		dap.listeners.before.launch.dapui_config = function()
-			dapui.open()
+		dap.listeners.before.launch["dap-view-config"] = function()
+			dv.open()
 		end
-		dap.listeners.before.event_terminated.dapui_config = function()
-			dapui.close()
+		dap.listeners.before.event_terminated["dap-view-config"] = function()
+			dv.close()
 		end
-		dap.listeners.before.event_exited.dapui_config = function()
-			dapui.close()
+		dap.listeners.before.event_exited["dap-view-config"] = function()
+			dv.close()
 		end
 
 		dap.adapters.php = {
@@ -33,52 +51,78 @@ return {
 			},
 		}
 
-		dapui.setup()
-
-		local keymap = vim.keymap
-		keymap.set("n", "<leader>dc", function()
-			dap.continue()
-		end)
-		vim.keymap.set("n", "<leader>dq", function()
-			require("dapui").close()
-		end)
-		keymap.set("n", "<leader>do", function()
-			dap.step_over()
-		end)
-		keymap.set("n", "<leader>di", function()
-			dap.step_into()
-		end)
-		keymap.set("n", "<leader>dO", function()
-			dap.step_out()
-		end)
-		keymap.set("n", "<leader>b", function()
-			dap.toggle_breakpoint()
-		end)
-		keymap.set("n", "<leader>B", function()
-			dap.set_breakpoint()
-		end)
-		keymap.set("n", "<leader>lp", function()
-			dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-		end)
-		keymap.set("n", "<leader>dr", function()
-			dap.repl.open()
-		end)
-		keymap.set("n", "<leader>dl", function()
-			dap.run_last()
-		end)
-		keymap.set({ "n", "v" }, "<leader>dh", function()
-			dap.ui.widgets.hover()
-		end)
-		keymap.set({ "n", "v" }, "<leader>dp", function()
-			dap.ui.widgets.preview()
-		end)
-		keymap.set("n", "<leader>df", function()
-			local widgets = dap.ui.widgets
-			widgets.centered_float(widgets.frames)
-		end)
-		keymap.set("n", "<leader>ds", function()
-			local widgets = dap.ui.widgets
-			widgets.centered_float(widgets.scopes)
-		end)
+		dv.setup()
 	end,
+	keys = {
+		{
+			"<leader>dc",
+			function()
+				require("dap").continue()
+			end,
+			desc = "DAP continue",
+		},
+		{
+			"<leader>dv",
+			function()
+				require("dap-view").toggle(true)
+			end,
+			desc = "DAP view open",
+		},
+		{
+			"<leader>do",
+			function()
+				require("dap").step_over()
+			end,
+			desc = "DAP step over",
+		},
+		{
+			"<leader>di",
+			function()
+				require("dap").step_into()
+			end,
+			desc = "DAP step into",
+		},
+		{
+			"<leader>dO",
+			function()
+				require("dap").step_out()
+			end,
+			desc = "DAP step out",
+		},
+		{
+			"<leader>b",
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			desc = "DAP toggle breakpoint",
+		},
+		{
+			"<leader>B",
+			function()
+				require("dap").set_breakpoint()
+			end,
+			desc = "DAP set breakpoint",
+		},
+		{
+			"<leader>lp",
+			function()
+				require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+			end,
+			desc = "DAP log point message",
+		},
+		{
+			"<leader>dr",
+			function()
+				require("dap").repl.open()
+			end,
+			desc = "DAP open repl",
+		},
+		{
+			"<leader>dl",
+			function()
+				require("dap").run_last()
+			end,
+			desc = "DAP run last",
+		},
+	},
 }
