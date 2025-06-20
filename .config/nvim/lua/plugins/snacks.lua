@@ -35,7 +35,7 @@ return {
 		picker = {
 			enabled = true,
 			hidden = true,
-      ignored = true,
+			ignored = true,
 		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },

@@ -67,6 +67,7 @@ alias dnuke='docker rm -f $(docker ps -aq) && docker system prune -af --volumes'
 ### Starship ###
 ################
 eval "$(starship init zsh)"
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 . /usr/share/nvm/init-nvm.sh

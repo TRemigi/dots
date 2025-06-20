@@ -15,27 +15,6 @@ return {
 		{ "<leader>mr", "<cmd>DB<CR>", desc = "Run SQL query" },
 		{ "<leader>ma", "<cmd>DBUIAddConnection<CR>", desc = "Add DB connection" },
 		{ "<leader>mf", "<cmd>DBUIFindBuffer<CR>", desc = "Find DB buffer" },
-		{
-			"<leader>mt",
-			function()
-				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-					local name = vim.api.nvim_buf_get_name(buf)
-					if name:match("^dbui:///results") then
-						if vim.api.nvim_buf_is_loaded(buf) then
-							for _, win in ipairs(vim.api.nvim_list_wins()) do
-								if vim.api.nvim_win_get_buf(win) == buf then
-									vim.api.nvim_win_close(win, true)
-									return
-								end
-							end
-							vim.cmd("sbuffer " .. buf)
-							return
-						end
-					end
-				end
-			end,
-			desc = "Toggle DBUI Results Buffer",
-		},
 	},
 	config = function()
 		vim.g.db_ui_use_nerd_fonts = 1
@@ -56,6 +35,13 @@ return {
 			return result and result:gsub("%s+$", "") or nil
 		end
 
+    -- Connections are defined in untracked file ~/.config/nvim/local/dadbod-connections.lua
+    -- Connectiton URLs are stored securely using the "pass" package.
+    -- Each connection provides a connection name and the "pass" path to the connection URL.
+    -- Connections format:
+    --   return {
+    --     { name = "local_optimus", path = "mysql/dev/optimus" },
+    --   }
 		local connections = {}
 		local ok, result = pcall(dofile, vim.fn.expand("~/.config/nvim/local/dadbod-connections.lua"))
 		if ok then
