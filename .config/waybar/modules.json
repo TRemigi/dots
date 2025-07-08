@@ -25,7 +25,9 @@
       "class<Slack>": "󰒱",
       "class<Postman>": "",
       "class<TablePlus>": "",
-      "class<zoom>": "󰍫"
+      "class<zoom>": "󰍫",
+      "class<burp-StartBurp>": "󰒄",
+      "class<zen>": "󰖟"
     }
   },
   "custom/swaync": {

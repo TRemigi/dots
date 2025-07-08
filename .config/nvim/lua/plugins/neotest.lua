@@ -6,10 +6,14 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"olimorris/neotest-phpunit",
+		{ "fredrikaverpil/neotest-golang", version = "*" },
 	},
 	config = function()
 		require("neotest").setup({
 			adapters = {
+				require("neotest-golang")({
+					runner = "gotestsum",
+				}),
 				require("neotest-phpunit")({
 					phpunit_cmd = function()
 						return "docker-test-php"
@@ -18,10 +22,10 @@ return {
 						return "/app"
 					end,
 				}),
-			},
-			icons = {
-				passed = "",
-				failed = "",
+				icons = {
+					passed = "",
+					failed = "",
+				},
 			},
 			log_level = vim.log.levels.WARN,
 		})
@@ -43,12 +47,12 @@ return {
 			return "NeotestWatch_" .. path:gsub("[^%w_]", "_")
 		end
 
-		local function get_all_test_files()
+		local function get_all_php_test_files()
 			local scan = require("plenary.scandir")
 			return scan.scan_dir("./tests", { hidden = false, depth = 10, add_dirs = false })
 		end
 
-		local function toggle_watch_for_current_buffer()
+		local function toggle_watch_for_current_php_buffer()
 			local buf_path = vim.api.nvim_buf_get_name(0)
 			local augroup_name = sanitize_autocmd_name(buf_path)
 
@@ -59,7 +63,7 @@ return {
 				return
 			end
 
-			local test_files = get_all_test_files()
+			local test_files = get_all_php_test_files()
 			if vim.tbl_isempty(test_files) then
 				vim.notify("⚠️ No test files found in ./tests")
 				return
@@ -102,7 +106,7 @@ return {
 		end
 
 		-- keymaps
-		vim.keymap.set("n", "<leader>tw", toggle_watch_for_current_buffer, {
+		vim.keymap.set("n", "<leader>tw", toggle_watch_for_current_php_buffer, {
 			desc = "Neotest: Watch current file and run selected test on save",
 		})
 
