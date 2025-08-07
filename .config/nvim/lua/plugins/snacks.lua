@@ -9,7 +9,7 @@ return {
 			easing = "sine",
 			fps = 60, -- frames per second. Global setting for all animations
 		},
-		bigfile = { enabled = true },
+		bigfile = { enabled = false },
 		dashboard = {
 			sections = {
 				{ section = "header" },

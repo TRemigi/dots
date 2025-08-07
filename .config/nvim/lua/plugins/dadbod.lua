@@ -18,7 +18,19 @@ return {
 	},
 	config = function()
 		vim.g.db_ui_use_nerd_fonts = 1
-		vim.g.dadbod_mysql_cli = "mariadb"
+		vim.g.dadbod_mysqlcli = "mariadb"
+		vim.g.dadbod_cli_aliases = {
+		  mysql = "mariadb"
+		}
+		vim.api.nvim_create_autocmd("BufEnter", {
+			pattern = "*.sql",
+			callback = function()
+				if vim.b.db and vim.b.db:match("^mysql://") then
+					vim.bo.filetype = "mysql"
+				end
+			end,
+		})
+
 		local ok = pcall(require, "lazy.core.loader")
 		if ok then
 			require("lazy.core.loader").load("vim-dadbod-completion")
@@ -35,13 +47,13 @@ return {
 			return result and result:gsub("%s+$", "") or nil
 		end
 
-    -- Connections are defined in untracked file ~/.config/nvim/local/dadbod-connections.lua
-    -- Connectiton URLs are stored securely using the "pass" package.
-    -- Each connection provides a connection name and the "pass" path to the connection URL.
-    -- Connections format:
-    --   return {
-    --     { name = "local_optimus", path = "mysql/dev/optimus" },
-    --   }
+		-- Connections are defined in untracked file ~/.config/nvim/local/dadbod-connections.lua
+		-- Connectiton URLs are stored securely using the "pass" package.
+		-- Each connection provides a connection name and the "pass" path to the connection URL.
+		-- Connections format:
+		--   return {
+		--     { name = "local_optimus", path = "mysql/dev/optimus" },
+		--   }
 		local connections = {}
 		local ok, result = pcall(dofile, vim.fn.expand("~/.config/nvim/local/dadbod-connections.lua"))
 		if ok then

@@ -21,38 +21,38 @@ clock
 # indicator
 indicator
 indicator-radius=200
-indicator-thickness=7
+indicator-thickness=8
 
 # effects
-effect-blur=7x5
+effect-blur=5x3
 effect-vignette=0.5:0.5
 fade-in=0.2
 
 # ring
-ring-color=31748f
+ring-color=f6c177
 ring-wrong-color=eb6f92
 ring-ver-color=f6c177
 
 # inside
-inside-color=191724
-inside-clear-color=191724
-inside-ver-color=191724
+inside-color=1f1d2e
+inside-clear-color=1f1d2e
+inside-ver-color=1f1d2e
 inside-wrong-color=eb6f92
 
 # line
 line-color=00000000
 
 # highlights
-key-hl-color=9ccfd8
-caps-lock-key-hl-color=9ccfd8
-bs-hl-color=eb6f92
-caps-lock-bs-hl-color=eb6f92
+key-hl-color=c4a7e7
+caps-lock-key-hl-color=c4a7e7
+bs-hl-color=c4a7e7
+caps-lock-bs-hl-color=c4a7e7
 
 # font
 font=Hack Nerd Font Mono
 
 # text
-text-color=f6c177
+text-color=9ccfd8
 
 # separator
 separator-color=00000000

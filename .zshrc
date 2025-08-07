@@ -85,3 +85,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 . /usr/share/nvm/init-nvm.sh
+alias urlenc='jq -Rr @uri'

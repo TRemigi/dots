@@ -15,14 +15,16 @@ return {
 			local conform = require("conform")
 			conform.setup({
 				formatters_by_ft = {
+          sh = { "beautysh" },
 					lua = { "stylua" },
 					javascript = { "prettierd" },
-					typescript = { "prettierd" },
+					typescript = { "prettierd", lsp_format = "never" },
 					css = { "prettierd" },
 					html = { "prettierd" },
 					json = { "prettierd" },
 					yaml = { "prettierd" },
 					markdown = { "prettierd" },
+					xml = { "prettierd" },
 				},
 			})
 
@@ -46,20 +48,20 @@ return {
 					},
 				},
 				denols = {
-				  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-				  settings = {
-				    deno = {
-				      enable = true,
-				      suggest = {
-				        imports = {
-				          hosts = {
-				            ["https://deno.land"] = true,
-				            ["file://"] = true,
-				          },
-				        },
-				      },
-				    },
-				  },
+					root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+					settings = {
+						deno = {
+							enable = true,
+							suggest = {
+								imports = {
+									hosts = {
+										["https://deno.land"] = true,
+										["file://"] = true,
+									},
+								},
+							},
+						},
+					},
 				},
 				laravel_ls = {
 					root_dir = require("lspconfig.util").root_pattern("artisan", "composer.json", ".git"),
@@ -108,12 +110,26 @@ return {
 					},
 				},
 				pyright = true,
-				vtsls = {
+				ts_ls = {
+					filetypes = {
+						"typescript",
+						"javascript",
+						"typescriptreact",
+						"javascriptreact",
+						"vue",
+					},
 					server_capabilities = {
 						documentFormattingProvider = false,
 					},
-					root_dir = lspconfig.util.root_pattern("package.json"),
-					single_file_support = false,
+					init_options = {
+						plugins = {
+							-- {
+							-- 	name = "@vue/typescript-plugin",
+							-- 	location = vue_lang_path,
+							-- 	languages = { "vue" },
+							-- },
+						},
+					},
 				},
 				jsonls = {
 					server_capabilities = {

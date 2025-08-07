@@ -6,11 +6,31 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"olimorris/neotest-phpunit",
+		"thenbe/neotest-playwright",
+		"nvim-neotest/neotest-jest",
 		{ "fredrikaverpil/neotest-golang", version = "*" },
 	},
 	config = function()
 		require("neotest").setup({
+			discovery = {
+				enabled = false,
+			},
 			adapters = {
+				require("neotest-jest")({
+					jestCommand = "npm test -- --maxWorkers=1",
+					jest_test_discovery = true,
+					jestConfigFile = vim.fn.getcwd() .. "/jest.config.ts",
+					env = { ENVIRONMENT = "development" },
+					cwd = function()
+						return vim.fn.getcwd()
+					end,
+				}),
+				require("neotest-playwright").adapter({
+					options = {
+						persist_project_selection = true,
+						enable_dynamic_test_discovery = true,
+					},
+				}),
 				require("neotest-golang")({
 					runner = "gotestsum",
 				}),
@@ -42,7 +62,6 @@ return {
 
 		-- command to toggle watching the current buffer and run the test file selected in snacks picker
 		local active_watchers = {}
-
 		local function sanitize_autocmd_name(path)
 			return "NeotestWatch_" .. path:gsub("[^%w_]", "_")
 		end
