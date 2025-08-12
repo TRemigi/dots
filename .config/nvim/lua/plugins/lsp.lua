@@ -15,7 +15,7 @@ return {
 			local conform = require("conform")
 			conform.setup({
 				formatters_by_ft = {
-          sh = { "beautysh" },
+					sh = { "beautysh" },
 					lua = { "stylua" },
 					javascript = { "prettierd" },
 					typescript = { "prettierd", lsp_format = "never" },
@@ -116,19 +116,10 @@ return {
 						"javascript",
 						"typescriptreact",
 						"javascriptreact",
-						"vue",
 					},
+					init_options = {},
 					server_capabilities = {
 						documentFormattingProvider = false,
-					},
-					init_options = {
-						plugins = {
-							-- {
-							-- 	name = "@vue/typescript-plugin",
-							-- 	location = vue_lang_path,
-							-- 	languages = { "vue" },
-							-- },
-						},
 					},
 				},
 				jsonls = {
@@ -141,6 +132,7 @@ return {
 						},
 					},
 				},
+				vuels = { filetypes = { "vue" } },
 				yamlls = {
 					settings = {
 						yaml = {
@@ -155,6 +147,7 @@ return {
 
 			local servers_to_install = vim.tbl_filter(function(key)
 				local t = servers[key]
+
 				if type(t) == "table" then
 					return not t.manual_install
 				else
@@ -178,7 +171,8 @@ return {
 				"gopls",
 				"lua_ls",
 				"stylua",
-				"vtsls",
+				"ts_ls",
+				"vue-language-server",
 				-- "laravel_ls", add this back in when Mason is updated to include it
 			}
 

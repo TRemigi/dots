@@ -22,7 +22,9 @@ export FZF_DEFAULT_OPTS="
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-ZSH_THEME="robbyrussell"
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -30,12 +32,31 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   aliases
+  alias-finder
+  archlinux
+  charm
   docker
   docker-compose
+  fzf
+  git
   golang
+  httpie
   jsontools
+  kubectl
+  kubectx
+  node
+  npm
+  nvm
+  pass
+  python
+  ssh
+  # ssh-agent
+  systemd
+  thefuck
+  tmux
+  urltools
+  vi-mode
 )
 
 if [ -f "$HOME/.hiddenrc" ]; then
@@ -58,7 +79,7 @@ bindkey -s ^g "tmux-sessionizer\n"
 bindkey -s ^n "nvim \n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ###############
 ### Aliases ###
@@ -75,6 +96,16 @@ alias zsstat='sudo grep -r . /sys/kernel/debug/zswap/'
 alias zsinfo='sudo grep -r . /sys/module/zswap/parameters/'
 alias dnuke='docker rm -f $(docker ps -aq) && docker system prune -af --volumes'
 
+#################
+### Functions ###
+#################
+function clear-screen-and-scrollback() {
+    printf '\x1Bc'
+    zle clear-screen
+}
+
+zle -N clear-screen-and-scrollback
+bindkey '^K' clear-screen-and-scrollback
 
 ################
 ### Starship ###
