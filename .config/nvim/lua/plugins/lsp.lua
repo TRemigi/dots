@@ -28,6 +28,9 @@ return {
 				},
 			})
 
+			local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+			local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+
 			local lspconfig = require("lspconfig")
 			local servers = {
 				bashls = true,
@@ -117,7 +120,29 @@ return {
 						"typescriptreact",
 						"javascriptreact",
 					},
-					init_options = {},
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = volar_path,
+								languages = { "vue" },
+							},
+						},
+					},
+					settings = {
+						typescript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "all",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = true,
+								includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+					},
 					server_capabilities = {
 						documentFormattingProvider = false,
 					},
@@ -132,7 +157,36 @@ return {
 						},
 					},
 				},
-				vuels = { filetypes = { "vue" } },
+				volar = {
+          manual_install = true,
+					init_options = {
+						vue = {
+							hybridMode = false,
+						},
+					},
+					settings = {
+						typescript = {
+							inlayHints = {
+								enumMemberValues = {
+									enabled = true,
+								},
+								functionLikeReturnTypes = {
+									enabled = true,
+								},
+								propertyDeclarationTypes = {
+									enabled = true,
+								},
+								parameterTypes = {
+									enabled = true,
+									suppressWhenArgumentMatchesName = true,
+								},
+								variableTypes = {
+									enabled = true,
+								},
+							},
+						},
+					},
+				},
 				yamlls = {
 					settings = {
 						yaml = {
