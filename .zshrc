@@ -9,6 +9,8 @@ export XDG_CONFIG_HOME=~/.config
 export NVM_DIR="$HOME/.nvm"
 export HISTSIZE=10000
 export WAYLAND_DISPLAY=wayland-1
+export HISTFILE=~/.zsh_history
+export SAVEHIST=10000
 
 # fzf theme
 export FZF_DEFAULT_OPTS="
@@ -95,6 +97,8 @@ alias plog="sed 's/^[^{]*//' | jq"
 alias zsstat='sudo grep -r . /sys/kernel/debug/zswap/'
 alias zsinfo='sudo grep -r . /sys/module/zswap/parameters/'
 alias dnuke='docker rm -f $(docker ps -aq) && docker system prune -af --volumes'
+
+alias bt-ap='bluetoothctl connect CC:08:FA:F1:BD:0C'
 
 #################
 ### Functions ###

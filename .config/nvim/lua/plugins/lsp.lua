@@ -15,18 +15,59 @@ return {
 			local conform = require("conform")
 			conform.setup({
 				formatters_by_ft = {
-					sh = { "beautysh" },
-					lua = { "stylua" },
-					javascript = { "prettierd" },
-					typescript = { "prettierd", lsp_format = "never" },
 					css = { "prettierd" },
 					html = { "prettierd" },
+					javascript = {
+						"prettierd",
+						lsp_format = "prefer",
+						timeout_ms = 500,
+						filter = function(client)
+							return client.name == "eslint"
+						end,
+					},
 					json = { "prettierd" },
-					yaml = { "prettierd" },
+					lua = { "stylua" },
 					markdown = { "prettierd" },
+					sh = { "beautysh" },
+					typescript = {
+						"prettierd",
+						timeout_ms = 500,
+						lsp_format = "prefer",
+						filter = function(client)
+							return client.name == "eslint"
+						end,
+					},
 					xml = { "prettierd" },
+					yaml = { "prettierd" },
 				},
 			})
+
+			-- Enable go import cleanup on save
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*.go",
+				callback = function()
+					local params = vim.lsp.util.make_range_params()
+					params.context = { only = { "source.organizeImports" } }
+					-- buf_request_sync defaults to a 1000ms timeout. Depending on your
+					-- machine and codebase, you may want longer. Add an additional
+					-- argument after params if you find that you have to write the file
+					-- twice for changes to be saved.
+					-- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+					local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+					for cid, res in pairs(result or {}) do
+						for _, r in pairs(res.result or {}) do
+							if r.edit then
+								local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+								vim.lsp.util.apply_workspace_edit(r.edit, enc)
+							end
+						end
+					end
+					vim.lsp.buf.format({ async = false })
+				end,
+			})
+
+			local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+			local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
 
 			local lspconfig = require("lspconfig")
 			local servers = {
@@ -61,6 +102,14 @@ return {
 								},
 							},
 						},
+					},
+				},
+				eslint = {
+					filetypes = {
+						"typescript",
+						"javascript",
+						"typescriptreact",
+						"javascriptreact",
 					},
 				},
 				laravel_ls = {
@@ -117,7 +166,29 @@ return {
 						"typescriptreact",
 						"javascriptreact",
 					},
-					init_options = {},
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = volar_path,
+								languages = { "vue" },
+							},
+						},
+					},
+					settings = {
+						typescript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "all",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = true,
+								includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+					},
 					server_capabilities = {
 						documentFormattingProvider = false,
 					},
@@ -132,7 +203,36 @@ return {
 						},
 					},
 				},
-				vuels = { filetypes = { "vue" } },
+				volar = {
+					manual_install = true,
+					init_options = {
+						vue = {
+							hybridMode = false,
+						},
+					},
+					settings = {
+						typescript = {
+							inlayHints = {
+								enumMemberValues = {
+									enabled = true,
+								},
+								functionLikeReturnTypes = {
+									enabled = true,
+								},
+								propertyDeclarationTypes = {
+									enabled = true,
+								},
+								parameterTypes = {
+									enabled = true,
+									suppressWhenArgumentMatchesName = true,
+								},
+								variableTypes = {
+									enabled = true,
+								},
+							},
+						},
+					},
+				},
 				yamlls = {
 					settings = {
 						yaml = {
@@ -173,6 +273,7 @@ return {
 				"stylua",
 				"ts_ls",
 				"vue-language-server",
+				"eslint",
 				-- "laravel_ls", add this back in when Mason is updated to include it
 			}
 

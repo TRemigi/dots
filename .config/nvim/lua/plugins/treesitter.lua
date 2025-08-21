@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+  version = "v0.9.3",
   dependencies = {"LiadOz/nvim-dap-repl-highlights"},
 	build = ":TSUpdate",
 	config = function()

@@ -39,6 +39,25 @@ return {
 			command = "node",
 			args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
 		}
+		dap.adapters["pwa-node"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}",
+			executable = {
+				command = "node",
+				args = { "/path/to/js-debug/src/dapDebugServer.js", "${port}" },
+			},
+		}
+
+		dap.configurations.javascript = {
+			{
+				type = "pwa-node",
+				request = "launch",
+				name = "Launch file",
+				program = "${file}",
+				cwd = "${workspaceFolder}",
+			},
+		}
 		dap.configurations.php = {
 			{
 				type = "php",
