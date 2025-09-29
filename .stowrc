@@ -1,5 +1,2 @@
 --ignore=.stowrc
---ignore=init.sh
---ignore=package.json
 --ignore=.git*
---ignore=wallpaper

@@ -1,14 +1,27 @@
-theme = rose-pine
-window-padding-color = background
-window-decoration = false
-background-opacity = 0.92
-background-blur = 0
-cursor-style = block
-fullscreen = false
+# Dynamic theme colors
+config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
-font-family = "JetBrainsMono Nerd Font"
+# Font
+font-family = "JetBrainsMono Nerd Font Mono"
+font-style = Regular
+font-size = 9
 
-font-size = 12
+# Window
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface=false
+resize-overlay = never
 
+# Tab
+gtk-custom-css = tab.css
+
+# Cursor stlying
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Keyboard bindings
+keybind = f11=toggle_fullscreen
+
+# Mouse
 mouse-hide-while-typing = true
-window-save-state = always
