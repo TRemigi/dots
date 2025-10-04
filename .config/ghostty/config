@@ -12,6 +12,8 @@ window-padding-y = 14
 confirm-close-surface=false
 resize-overlay = never
 window-theme = ghostty
+window-inherit-font-size = true
+window-inherit-working-directory = true
 
 # Tab
 gtk-custom-css = tab.css
@@ -20,6 +22,7 @@ gtk-custom-css = tab.css
 cursor-style = "block"
 cursor-style-blink = false
 shell-integration-features = no-cursor
+custom-shader = ./shaders/cursor/cursor_smear_glow.glsl
 
 # Keyboard bindings
 keybind = f11=toggle_fullscreen
