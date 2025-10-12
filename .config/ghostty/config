@@ -14,6 +14,7 @@ resize-overlay = never
 window-theme = ghostty
 window-inherit-font-size = true
 window-inherit-working-directory = true
+background-opacity-cells = true
 
 # Tab
 gtk-custom-css = tab.css
