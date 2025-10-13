@@ -1,4 +1,22 @@
+sort_order = ["config", "tmux", "zoxide", "tmuxinator"]
+
 [default_session]
 preview_command = "eza --all --git --icons --color=always {}"
 
-sort_order = ["config", "tmux", "zoxide", "tmuxinator"]
+[[session]]
+name = "Dev"
+path = "~/dev"
+
+[[session]]
+name = "Dotfiles"
+path = "~/dots/"
+startup_command = "n"
+
+[[session]]
+name = "YGI"
+path = "~/dev/ygi"
+startup_command = "n"
+windows = ["term"]
+
+[[window]]
+name = "term"
