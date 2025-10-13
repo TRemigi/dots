@@ -2,3 +2,4 @@ lazy-lock.json
 package-lock.json
 node_modules/
 */nvim/local/
+*/tmux/plugins/
