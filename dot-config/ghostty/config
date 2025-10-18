@@ -30,3 +30,6 @@ keybind = f11=toggle_fullscreen
 
 # Mouse
 mouse-hide-while-typing = true
+
+# Command
+command = /usr/bin/zsh
