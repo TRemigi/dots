@@ -25,9 +25,6 @@ cursor-style-blink = false
 shell-integration-features = no-cursor
 custom-shader = ./shaders/cursor/cursor_smear_glow.glsl
 
-# Keyboard bindings
-keybind = f11=toggle_fullscreen
-
 # Mouse
 mouse-hide-while-typing = true
 
