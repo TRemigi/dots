@@ -27,6 +27,8 @@ custom-shader = ./shaders/cursor/cursor_smear_glow.glsl
 
 # Keyboard bindings
 keybind = f11=toggle_fullscreen
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
 
 # Mouse
 mouse-hide-while-typing = true
